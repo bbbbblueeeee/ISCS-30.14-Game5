@@ -7,6 +7,13 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_6xws8"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_cvnsp"]
+margin = 0.01
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6t5aa"]
+margin = 0.01
+radius = 0.1
+
 [node name="Player" type="CharacterBody3D" unique_id=244270885]
 script = ExtResource("1_v0iea")
 
@@ -17,8 +24,18 @@ shape = SubResource("CapsuleShape3D_6xws8")
 mesh = SubResource("CapsuleMesh_6xws8")
 
 [node name="Camera" type="Node3D" parent="." unique_id=571957960 node_paths=PackedStringArray("character")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 script = ExtResource("2_cvnsp")
 character = NodePath("..")
 
-[node name="Camera3D" type="Camera3D" parent="Camera" unique_id=1645792167]
-transform = Transform3D(1, 0, 0, 0, 0.9365865, 0.35043654, 0, -0.35043654, 0.9365865, 0, 1.5, 4)
+[node name="EdgeSpringArm" type="SpringArm3D" parent="Camera" unique_id=1405834804]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+shape = SubResource("SphereShape3D_cvnsp")
+
+[node name="RearSpringArm" type="SpringArm3D" parent="Camera/EdgeSpringArm" unique_id=552043344]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.1855694e-08, 0, 0.5)
+shape = SubResource("SphereShape3D_6t5aa")
+spring_length = 1.5
+
+[node name="Camera3D" type="Camera3D" parent="Camera/EdgeSpringArm/RearSpringArm" unique_id=1645792167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 1.5)
