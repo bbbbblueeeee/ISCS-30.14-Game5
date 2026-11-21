@@ -39,11 +39,15 @@ func _physics_process(delta: float) -> void:
 			collision_point = cam_ray.get_collision_point()
 		else:
 			collision_point = Vector3(0,0,-500)
-		bullet_ray.target_position = collision_point - gun_ray.global_position
+		bullet_ray.position = gun_ray.position
+		bullet_ray.target_position = collision_point
+		print("Collision Point: "+str(collision_point))
+		print("Bullet Target: "+str(bullet_ray.target_position))
 		instance = bullet.instantiate()
 		instance.position = bullet_ray.global_position
+		instance.transform.basis = bullet_ray.global_transform.basis
 		# instance.position = gun_ray.global_position
-		instance.transform.basis = gun_ray.global_transform.basis
+		# instance.transform.basis = gun_ray.global_transform.basis
 		get_parent().add_child(instance)
 
 	move_and_slide()
