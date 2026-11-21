@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const AIM_SPEED = 2.5
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 3.5
 
 @onready var gun_pivot: Node3D = $Skeleton3D/gunpivot
 @onready var gun_ray: RayCast3D = $Skeleton3D/gunpivot/gun/GunRay
