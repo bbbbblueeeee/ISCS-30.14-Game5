@@ -17,6 +17,9 @@ sky = SubResource("Sky_a02cp")
 albedo_color = Color(0.3315, 0.38707498, 0.39, 1)
 uv1_triplanar = true
 
+[sub_resource type="BoxMesh" id="BoxMesh_lgex6"]
+size = Vector3(0.155, 0.205, 0.545)
+
 [node name="World" type="Node3D" unique_id=1674262120]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=765801670]
@@ -34,9 +37,19 @@ size = Vector3(30.5, 6, 30.5)
 material = SubResource("StandardMaterial3D_6xws8")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1161166160]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.518712, 1.1872945, 2.3380365)
 operation = 2
 size = Vector3(30, 6, 30)
 material = SubResource("StandardMaterial3D_6xws8")
 
 [node name="Player" parent="." unique_id=244270885 instance=ExtResource("1_a02cp")]
+
+[node name="Skeleton3D" type="Skeleton3D" parent="Player" unique_id=898126771]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.58116066, 0, 0)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Player/Skeleton3D" unique_id=1004049049]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Skeleton3D/BoneAttachment3D" unique_id=619708484]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012442887, 0.21679717, 0)
+mesh = SubResource("BoxMesh_lgex6")
+skeleton = NodePath("../..")
