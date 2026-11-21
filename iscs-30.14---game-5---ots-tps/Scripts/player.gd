@@ -4,9 +4,10 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
-@onready var gun_ray: RayCast3D = $Skeleton3D/BoneAttachment3D/MeshInstance3D/GunRay
+@onready var gun_pivot: Node3D = $Skeleton3D/gunpivot
+@onready var gun_ray: RayCast3D = $Skeleton3D/gunpivot/gun/GunRay
 @onready var cam_ray: RayCast3D = $Camera/EdgeSpringArm/RearSpringArm/Camera3D/CamRay
-@onready var bullet_ray: RayCast3D = $Skeleton3D/BoneAttachment3D/MeshInstance3D/BulletRay
+@onready var bullet_ray: RayCast3D = $Skeleton3D/gunpivot/gun/BulletRay
 
 # Bullets
 var bullet = load("res://Scenes/bullet.tscn")
@@ -32,22 +33,25 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
+	var collision_point: Vector3
+		
+	if cam_ray.is_colliding():
+		collision_point = cam_ray.get_collision_point()
+	else:
+		collision_point = cam_ray.to_global(cam_ray.target_position)
+		
+	gun_pivot.look_at(collision_point, Vector3.UP)
+	
 	# Handle shooting
-	if Input.is_action_pressed("shoot"):
-		var collision_point: Vector3
-		if cam_ray.is_colliding():
-			collision_point = cam_ray.get_collision_point()
-		else:
-			collision_point = Vector3(0,0,-500)
-		bullet_ray.position = gun_ray.position
-		bullet_ray.target_position = collision_point
-		print("Collision Point: "+str(collision_point))
-		print("Bullet Target: "+str(bullet_ray.target_position))
+	if Input.is_action_just_pressed("shoot"):		
+		var gun_position = gun_pivot.global_position
+		var shot_direction = (collision_point - gun_position).normalized()
+		
 		instance = bullet.instantiate()
-		instance.position = bullet_ray.global_position
-		instance.transform.basis = bullet_ray.global_transform.basis
-		# instance.position = gun_ray.global_position
-		# instance.transform.basis = gun_ray.global_transform.basis
-		get_parent().add_child(instance)
+		get_tree().current_scene.add_child(instance)
+		instance.global_position = gun_position
+		#makes the bullet point to the aim
+		gun_ray.look_at(collision_point, Vector3.UP)
+		instance.look_at(gun_position + shot_direction, Vector3.UP)
 
 	move_and_slide()

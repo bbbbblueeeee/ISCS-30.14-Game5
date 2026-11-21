@@ -35,18 +35,18 @@ script = ExtResource("1_v0iea")
 [node name="Skeleton3D" type="Skeleton3D" parent="." unique_id=2043598746]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.58116066, 0, 0)
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Skeleton3D" unique_id=331991469]
+[node name="gunpivot" type="Node3D" parent="Skeleton3D" unique_id=1556209745]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Skeleton3D/BoneAttachment3D" unique_id=1036128602]
+[node name="gun" type="MeshInstance3D" parent="Skeleton3D/gunpivot" unique_id=1036128602]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012442887, 0.21679717, 0)
 mesh = SubResource("BoxMesh_vgqql")
 skeleton = NodePath("../..")
 
-[node name="GunRay" type="RayCast3D" parent="Skeleton3D/BoneAttachment3D/MeshInstance3D" unique_id=1410087923]
+[node name="GunRay" type="RayCast3D" parent="Skeleton3D/gunpivot/gun" unique_id=1410087923]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.29286146)
 target_position = Vector3(0, 0, -1)
 
-[node name="BulletRay" type="RayCast3D" parent="Skeleton3D/BoneAttachment3D/MeshInstance3D" unique_id=81013665]
+[node name="BulletRay" type="RayCast3D" parent="Skeleton3D/gunpivot/gun" unique_id=81013665]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5857229)
 target_position = Vector3(0, 0, -1)
 
