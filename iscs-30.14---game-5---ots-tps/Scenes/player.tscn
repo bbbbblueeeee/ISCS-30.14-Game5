@@ -1,7 +1,15 @@
 [gd_scene format=3 uid="uid://17ylsbu2hukw"]
 
 [ext_resource type="Script" uid="uid://dx3gfhcvei1ux" path="res://Scripts/player.gd" id="1_v0iea"]
+[ext_resource type="Texture2D" uid="uid://cks6t84hnr345" path="res://Assets/kenney_retro-urban-kit/Models/FBX format/Textures/bars.png" id="2_6t5aa"]
 [ext_resource type="Script" uid="uid://tgtevq7m8hwj" path="res://Scripts/camera.gd" id="2_cvnsp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5a7ea"]
+albedo_texture = ExtResource("2_6t5aa")
+
+[sub_resource type="BoxMesh" id="BoxMesh_vgqql"]
+material = SubResource("StandardMaterial3D_5a7ea")
+size = Vector3(0.155, 0.205, 0.545)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6xws8"]
 radius = 0.8
@@ -15,9 +23,32 @@ margin = 0.01
 margin = 0.01
 radius = 0.1
 
+[sub_resource type="SphereMesh" id="SphereMesh_lgex6"]
+radius = 0.7
+height = 1.4
+rings = 37
+
 [node name="Player" type="CharacterBody3D" unique_id=244270885]
 collision_layer = 2
 script = ExtResource("1_v0iea")
+
+[node name="Skeleton3D" type="Skeleton3D" parent="." unique_id=2043598746]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.58116066, 0, 0)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Skeleton3D" unique_id=331991469]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Skeleton3D/BoneAttachment3D" unique_id=1036128602]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012442887, 0.21679717, 0)
+mesh = SubResource("BoxMesh_vgqql")
+skeleton = NodePath("../..")
+
+[node name="GunRay" type="RayCast3D" parent="Skeleton3D/BoneAttachment3D/MeshInstance3D" unique_id=1410087923]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.29286146)
+target_position = Vector3(0, 0, -1)
+
+[node name="BulletRay" type="RayCast3D" parent="Skeleton3D/BoneAttachment3D/MeshInstance3D" unique_id=81013665]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5857229)
+target_position = Vector3(0, 0, -1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=323301544]
 shape = SubResource("CapsuleShape3D_6xws8")
@@ -44,3 +75,11 @@ spring_length = 1.5
 
 [node name="Camera3D" type="Camera3D" parent="Camera/EdgeSpringArm/RearSpringArm" unique_id=1645792167]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 1.5)
+
+[node name="CamRay" type="RayCast3D" parent="Camera/EdgeSpringArm/RearSpringArm/Camera3D" unique_id=2000937594]
+target_position = Vector3(0, 0, -500)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Camera/EdgeSpringArm/RearSpringArm/Camera3D" unique_id=448192089]
+position = Vector2(576, 324)
+scale = Vector2(8.107144, 8.107144)
+mesh = SubResource("SphereMesh_lgex6")
