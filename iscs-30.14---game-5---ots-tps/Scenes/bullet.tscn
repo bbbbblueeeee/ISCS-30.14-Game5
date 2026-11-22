@@ -29,15 +29,17 @@ gravity = Vector3(0, 0, 0)
 [sub_resource type="BoxMesh" id="BoxMesh_lgex6"]
 size = Vector3(0.04, 0.04, 0.04)
 
-[node name="Bullet" type="Node3D" unique_id=207837991]
+[node name="Bullet" type="Node3D" unique_id=207837991 groups=["bullet"]]
 script = ExtResource("1_xjght")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1707663574]
 mesh = SubResource("BoxMesh_sd078")
 
-[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1729636068]
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1729636068 groups=["bullet"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.046297073)
 target_position = Vector3(0, 0, 0.645)
+collision_mask = 2
+collide_with_areas = true
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1779285829]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.69756866)

@@ -16,7 +16,10 @@ func _physics_process(delta: float) -> void:
 	if ray.is_colliding():
 		mesh.visible = false
 		particles.emitting = true
-		print("Hit! Emitted Particles")
+		ray.enabled = false
+		# print("Hit! Emitted Particles")
+		if ray.get_collider().is_in_group("enemy"):
+			ray.get_collider().get_parent().hit()
 		await get_tree().create_timer(1.0).timeout
 		queue_free()
 	else:

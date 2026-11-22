@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dt4el28p1v2px"]
+
+[ext_resource type="Script" uid="uid://c2iygcb5gpgli" path="res://Scenes/enemy.gd" id="1_hghv2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lgex6"]
+albedo_color = Color(0.69803923, 0.07058824, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sd078"]
+material = SubResource("StandardMaterial3D_lgex6")
+radius = 0.605
+height = 2.745
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sd078"]
+radius = 0.6513672
+height = 2.5850677
+
+[node name="Enemy" type="Node3D" unique_id=1607283453 groups=["enemy"]]
+script = ExtResource("1_hghv2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=760016650]
+mesh = SubResource("CapsuleMesh_sd078")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1603927576 groups=["enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.009750485, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=76770729]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08840424, 0)
+shape = SubResource("CapsuleShape3D_sd078")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

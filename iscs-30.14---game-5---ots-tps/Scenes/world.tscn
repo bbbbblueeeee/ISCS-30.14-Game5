@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b8wmgw4gabufv"]
 
 [ext_resource type="PackedScene" uid="uid://17ylsbu2hukw" path="res://Scenes/player.tscn" id="1_a02cp"]
+[ext_resource type="PackedScene" uid="uid://dt4el28p1v2px" path="res://Scenes/enemy.tscn" id="2_go701"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yp4wr"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -51,6 +52,8 @@ material = SubResource("StandardMaterial3D_6xws8")
 
 [node name="Floor" type="StaticBody3D" parent="CSGCombiner3D/CSGBox3D" unique_id=1341271411]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.552856, 0, -7.6782084)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="CSGCombiner3D/CSGBox3D/Floor" unique_id=446955737]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4372635, -1.8084934, 6.7389994)
@@ -68,6 +71,8 @@ size = Vector3(2.6733398, 1, 1)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CSGCombiner3D/CSGBox3D3" unique_id=2063708800]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8366699, 0, -3.938787)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/CSGBox3D3/StaticBody3D" unique_id=2078050704]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8367088, -0.013134778, 3.9535413)
@@ -75,6 +80,8 @@ shape = SubResource("BoxShape3D_lgex6")
 
 [node name="Wall4" type="StaticBody3D" parent="CSGCombiner3D" unique_id=1280696062]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.61754, 0, 0)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/Wall4" unique_id=1366874013]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.86653, 0.54827476, -12.622179)
@@ -82,6 +89,8 @@ shape = SubResource("BoxShape3D_sd078")
 
 [node name="Wall3" type="StaticBody3D" parent="CSGCombiner3D" unique_id=2001991148]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.80877, 0, 0)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/Wall3" unique_id=1630294713]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.128227, 0.5866699, 32.851772)
@@ -89,6 +98,8 @@ shape = SubResource("BoxShape3D_sd078")
 
 [node name="Wall1" type="StaticBody3D" parent="CSGCombiner3D" unique_id=1096851571]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.350897, 0, 0)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/Wall1" unique_id=433344941]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8974495, 0.55753326, 10.2343445)
@@ -96,9 +107,22 @@ shape = SubResource("BoxShape3D_pwwgx")
 
 [node name="Wall2" type="StaticBody3D" parent="CSGCombiner3D" unique_id=2139048707]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.760918, 0, 0)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/Wall2" unique_id=1835126476]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.63628006, 0.5299072, 10.094269)
 shape = SubResource("BoxShape3D_8max5")
 
 [node name="Player" parent="." unique_id=244270885 instance=ExtResource("1_a02cp")]
+
+[node name="Enemies" type="Node3D" parent="." unique_id=573230445]
+
+[node name="Enemy3" parent="Enemies" unique_id=1607283453 instance=ExtResource("2_go701")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.309769, -0.5066345, 11.17485)
+
+[node name="Enemy2" parent="Enemies" unique_id=719282712 instance=ExtResource("2_go701")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5239105, -0.4619748, 7.8893776)
+
+[node name="Enemy" parent="Enemies" unique_id=1942894726 instance=ExtResource("2_go701")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.063448, -0.37302256, 5.3684044)
