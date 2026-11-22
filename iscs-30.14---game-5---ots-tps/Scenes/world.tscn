@@ -118,7 +118,22 @@ shape = SubResource("BoxShape3D_8max5")
 
 [node name="Enemies" type="Node3D" parent="." unique_id=573230445]
 
-[node name="Enemy3" parent="Enemies" unique_id=1607283453 instance=ExtResource("2_go701")]
+[node name="Enemy8" parent="Enemies" unique_id=1607283453 instance=ExtResource("2_go701")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.594145, -0.36018825, 27.854698)
+
+[node name="Enemy7" parent="Enemies" unique_id=829226145 instance=ExtResource("2_go701")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.462217, -0.34122562, 25.505125)
+
+[node name="Enemy6" parent="Enemies" unique_id=2097745032 instance=ExtResource("2_go701")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.642027, -0.34805846, -5.468749)
+
+[node name="Enemy5" parent="Enemies" unique_id=2059054504 instance=ExtResource("2_go701")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.87917, -0.40582848, -7.8915353)
+
+[node name="Enemy4" parent="Enemies" unique_id=798884407 instance=ExtResource("2_go701")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.210132, -0.5314456, 11.925183)
+
+[node name="Enemy3" parent="Enemies" unique_id=511194271 instance=ExtResource("2_go701")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.309769, -0.5066345, 11.17485)
 
 [node name="Enemy2" parent="Enemies" unique_id=719282712 instance=ExtResource("2_go701")]
