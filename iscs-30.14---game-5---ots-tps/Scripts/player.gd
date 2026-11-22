@@ -9,6 +9,7 @@ const JUMP_VELOCITY = 3.5
 @onready var gun_ray: RayCast3D = $Skeleton3D/gunpivot/gun/GunRay
 @onready var cam_ray: RayCast3D = $Camera/EdgeSpringArm/RearSpringArm/Camera3D/CamRay
 @onready var bullet_ray: RayCast3D = $Skeleton3D/gunpivot/gun/BulletRay
+@onready var gun_sfx: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 # Bullets
 var bullet = load("res://Scenes/bullet.tscn")
@@ -59,5 +60,6 @@ func _physics_process(delta: float) -> void:
 		#makes the bullet point to the aim
 		gun_ray.look_at(collision_point, Vector3.UP)
 		instance.look_at(gun_position + shot_direction, Vector3.UP)
+		gun_sfx.play()
 
 	move_and_slide()

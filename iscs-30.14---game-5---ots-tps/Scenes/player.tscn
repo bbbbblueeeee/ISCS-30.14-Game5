@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cks6t84hnr345" path="res://Assets/kenney_retro-urban-kit/Models/FBX format/Textures/bars.png" id="2_6t5aa"]
 [ext_resource type="Script" uid="uid://tgtevq7m8hwj" path="res://Scripts/camera.gd" id="2_cvnsp"]
 [ext_resource type="ArrayMesh" uid="uid://xgdbtc8m5w3j" path="res://Assets/Alien_Pet_Mesh_1.res" id="3_vgqql"]
+[ext_resource type="AudioStream" uid="uid://bj5vcvovc0ckk" path="res://Assets/Sound/mixkit-cartoon-blow-impact-2654.wav" id="5_fkybt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5a7ea"]
 albedo_texture = ExtResource("2_6t5aa")
@@ -83,3 +84,8 @@ target_position = Vector3(0, 0, -50)
 position = Vector2(576, 324)
 scale = Vector2(8.107144, 8.107144)
 mesh = SubResource("SphereMesh_lgex6")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1563116082]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.56486833, 0.35328346, -0.17664064)
+stream = ExtResource("5_fkybt")
+volume_db = 5.0

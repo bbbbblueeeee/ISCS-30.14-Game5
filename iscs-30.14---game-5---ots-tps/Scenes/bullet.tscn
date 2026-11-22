@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://edyd3kw31nxa"]
 
 [ext_resource type="Script" uid="uid://b5a7xje0cv6qs" path="res://Scripts/bullet.gd" id="1_xjght"]
+[ext_resource type="AudioStream" uid="uid://bs5goxvvpkwjj" path="res://Assets/Sound/mixkit-arcade-game-explosion-1699_iizPWLTw.wav" id="2_oduel"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4mw4s"]
 albedo_color = Color(0.9533976, 0.48679686, 0.08836239, 1)
@@ -54,5 +55,10 @@ draw_pass_1 = SubResource("BoxMesh_lgex6")
 wait_time = 10.0
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=660704633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.49632096)
+stream = ExtResource("2_oduel")
+volume_db = 2.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
