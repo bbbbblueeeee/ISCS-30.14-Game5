@@ -30,13 +30,14 @@ shadow_enabled = true
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=316687091]
-size = Vector3(30.5, 6, 30.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.716187, 0, 10.411499)
+size = Vector3(49.932373, 6, 51.322998)
 material = SubResource("StandardMaterial3D_6xws8")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1161166160]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.518712, 1.1872945, 2.3380365)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.327794, 1.1872945, 10.1070795)
 operation = 2
-size = Vector3(30, 6, 30)
+size = Vector3(41.618164, 6, 45.538086)
 material = SubResource("StandardMaterial3D_6xws8")
 
 [node name="Player" parent="." unique_id=244270885 instance=ExtResource("1_a02cp")]

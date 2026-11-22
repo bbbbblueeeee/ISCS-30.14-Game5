@@ -77,7 +77,7 @@ spring_length = 1.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 1.5)
 
 [node name="CamRay" type="RayCast3D" parent="Camera/EdgeSpringArm/RearSpringArm/Camera3D" unique_id=2000937594]
-target_position = Vector3(0, 0, -500)
+target_position = Vector3(0, 0, -50)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Camera/EdgeSpringArm/RearSpringArm/Camera3D" unique_id=448192089]
 position = Vector2(576, 324)
