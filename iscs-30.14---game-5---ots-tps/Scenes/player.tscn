@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dx3gfhcvei1ux" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="Texture2D" uid="uid://cks6t84hnr345" path="res://Assets/kenney_retro-urban-kit/Models/FBX format/Textures/bars.png" id="2_6t5aa"]
 [ext_resource type="Script" uid="uid://tgtevq7m8hwj" path="res://Scripts/camera.gd" id="2_cvnsp"]
+[ext_resource type="ArrayMesh" uid="uid://xgdbtc8m5w3j" path="res://Assets/Alien_Pet_Mesh_1.res" id="3_vgqql"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5a7ea"]
 albedo_texture = ExtResource("2_6t5aa")
@@ -13,8 +14,6 @@ size = Vector3(0.155, 0.205, 0.545)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6xws8"]
 radius = 0.8
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_6xws8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cvnsp"]
 margin = 0.01
@@ -54,7 +53,8 @@ target_position = Vector3(0, 0, -1)
 shape = SubResource("CapsuleShape3D_6xws8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1237451456]
-mesh = SubResource("CapsuleMesh_6xws8")
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+mesh = ExtResource("3_vgqql")
 
 [node name="Camera" type="Node3D" parent="." unique_id=571957960 node_paths=PackedStringArray("character", "edge_spring_arm", "rear_spring_arm", "camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
